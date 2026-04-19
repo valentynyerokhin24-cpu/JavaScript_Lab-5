@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лабораторна робота №5</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <main class="app-container">
+        <div class="glass-card">
+            <header>
+                <h1>JS DOM Interaction</h1>
+            </header>
+            
+            <section class="content">
+                <p>Введіть текст для взаємодії з моделлю документа (DOM):</p>
+                
+                <div class="input-wrapper">
+                    <input type="text" id="userInput" placeholder="Ваше повідомлення..." autocomplete="off">
+                    <button id="actionBtn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </button>
+                </div>
+
+                <div id="resultArea" class="output-box">
+                    Очікування вводу користувача...
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
