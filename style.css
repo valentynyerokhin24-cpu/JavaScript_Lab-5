@@ -1,23 +1,10 @@
-body {
-    background: #0f172a;
-    color: #f1f5f9;
-    font-family: sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
+body { font-family: sans-serif; background: #fff; margin: 20px; }
+h1 { text-align: center; }
+.controls { display: flex; justify-content: center; gap: 10px; align-items: center; }
+.stats { font-weight: bold; margin-bottom: 20px; }
+.pixel {
+    position: absolute;
+    cursor: pointer;
+    transition: none;
 }
-.glass-card {
-    background: rgba(30, 41, 59, 0.7);
-    padding: 2rem;
-    border-radius: 15px;
-    border: 1px solid rgba(255,255,255,0.1);
-    backdrop-filter: blur(10px);
-    width: 350px;
-}
-.input-section { margin-bottom: 15px; display: flex; gap: 5px; }
-input { flex: 1; padding: 8px; border-radius: 5px; border: none; background: #1e293b; color: white; }
-button { cursor: pointer; background: #6366f1; border: none; color: white; padding: 8px 12px; border-radius: 5px; }
-.results p { font-size: 0.9rem; color: #94a3b8; }
-span { color: #818cf8; font-weight: bold; }
+/* Початкові розміри будуть задані в JS */
