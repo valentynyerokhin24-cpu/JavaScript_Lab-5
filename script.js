@@ -1,16 +1,15 @@
-// Це спрацює одразу при завантаженні сторінки
-console.log("--- СИСТЕМА ГОТОВА ---");
-console.log("Об'єкт document знайдено: ", document.title); [cite: 8, 10]
-
 let score = 0;
 let timeLeft = 0;
 let gameTimer;
 let currentDifficulty = "";
 
-const startBtn = document.getElementById('startBtn'); [cite: 13]
+const startBtn = document.getElementById('startBtn');
 const pixel = document.getElementById('pixel');
 const scoreEl = document.getElementById('score');
 const timerEl = document.getElementById('timer');
+
+// Перевірка, що скрипт підключено [cite: 10]
+console.log("--- Скрипт активовано ---");
 
 startBtn.addEventListener('click', () => {
     const diff = document.getElementById('difficulty').value;
@@ -24,7 +23,14 @@ startBtn.addEventListener('click', () => {
 
     pixel.style.backgroundColor = color;
     
-    console.log("Гру розпочато! Складність:", diff, "Колір:", color);
+    // Динамічна зміна стилів через об'єкт style [cite: 21-22]
+    let size = 50;
+    if (diff === 'lazy') size = 60;
+    if (diff === 'catch') size = 30;
+    pixel.style.width = size + 'px';
+    pixel.style.height = size + 'px';
+
+    console.log("Гру розпочато! Складність: " + diff);
 
     newRound();
 });
@@ -36,12 +42,12 @@ function newRound() {
     else if (currentDifficulty === 'normal') timeLeft = 2;
     else timeLeft = 1;
 
-    timerEl.textContent = timeLeft; [cite: 20]
+    timerEl.textContent = timeLeft;
     movePixel();
 
     gameTimer = setInterval(() => {
         timeLeft--;
-        timerEl.textContent = timeLeft; [cite: 20]
+        timerEl.textContent = timeLeft;
         if (timeLeft <= 0) gameOver();
     }, 1000);
 }
@@ -52,24 +58,20 @@ function movePixel() {
     pixel.style.left = x + 'px';
     pixel.style.top = y + 'px';
     
-    // Логуємо координати кожного разу
-    console.log(`Квадрат переміщено на: x=${Math.round(x)}, y=${Math.round(y)}`);
+    // Логування координат у консоль [cite: 10]
+    console.log("Координати: x=" + Math.round(x) + ", y=" + Math.round(y));
 }
 
 pixel.addEventListener('click', () => {
     score++;
-    scoreEl.textContent = score; [cite: 20]
-    console.log("Клік! Поточні очки:", score);
+    scoreEl.textContent = score;
+    console.log("Клік! Рахунок: " + score);
     newRound();
 });
 
 function gameOver() {
     clearInterval(gameTimer);
-    console.log("--- ГРА ЗАКІНЧЕНА ---");
-    console.log("Фінальний рахунок:", score);
-    
-    alert(`Game over! Your score is ${score}!`);
-    
-    // ПРИБЕРИ location.reload(), щоб консоль не очищалася!
-    // location.reload(); 
+    console.log("--- Кінець гри. Результат: " + score + " ---");
+    alert("Game over! Your score is " + score);
+    // location.reload(); // Тимчасово вимкнено, щоб ти бачив логи
 }
