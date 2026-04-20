@@ -1,47 +1,25 @@
+// Отримання доступу різними методами
+const input1 = document.getElementById('userInput'); // Метод getElementById [cite: 13]
+const btn1 = document.querySelector('#btnText');      // Метод querySelector [cite: 16]
+const res1 = document.getElementById('resText');
 
-const inputElement = document.getElementById('userInput');
-const buttonElement = document.getElementById('actionBtn');
-const displayElement = document.getElementById('resultArea');
+const input2 = document.getElementById('htmlInput');
+const btn2 = document.getElementById('btnHTML');
+const res2 = document.getElementById('resHTML');
 
-console.log("--- Початковий стан сторінки ---");
-console.log("Початковий текст у блоці:", displayElement.innerHTML); 
+// Початковий вивід у консоль [cite: 8, 10]
+console.log("Доступ до об'єкта document отримано.");
+console.log("Початковий вміст resText:", res1.textContent);
 
-
-buttonElement.addEventListener('click', function() {
-    
-   
-    const rawData = inputElement.value;
-
-    
-    console.log("--- Подія натискання на кнопку ---");
-    console.log("Користувач ввів текст:", rawData);
-
-
-    if (rawData.trim() !== "") {
-        
-
-        displayElement.textContent = "Ви написали: " + rawData;
-        
-   
-        displayElement.style.color = "#818cf8"; 
-        
-        console.log("Статус: DOM успішно оновлено текстом користувача.");
-        
-
-        inputElement.value = "";
-    } else {
-     
-        displayElement.textContent = "Помилка: Поле вводу порожнє!";
-        displayElement.style.color = "#f87171";
-        
-        console.warn("Попередження: Спроба вводу порожнього рядка.");
-    }
+// Обробник для textContent (безпечний текст) [cite: 20]
+btn1.addEventListener('click', () => {
+    res1.textContent = input1.value; 
+    console.log("Оновлено через textContent:", input1.value);
 });
 
-
-inputElement.addEventListener('keypress', (event) => {
-    if (event.key === 'Enter') {
-        console.log("Натиснуто клавішу Enter");
-        buttonElement.click(); 
-    }
+// Обробник для innerHTML (парсинг HTML-коду) [cite: 21, 22]
+btn2.addEventListener('click', () => {
+    // Рядок буде пропущений через парсер браузера [cite: 22]
+    res2.innerHTML = input2.value;
+    console.log("Оновлено через innerHTML:", input2.value);
 });
