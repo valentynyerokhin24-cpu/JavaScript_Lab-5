@@ -2,28 +2,41 @@
 <html lang="uk">
 <head>
     <meta charset="UTF-8">
-    <title>Лабораторна робота №5</title>
+    <title>Pixel Hunt - Lab 5</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="glass-card">
-        <h1>DOM Interaction</h1>
-        
-        <div class="input-section">
-            <input type="text" id="userInput" placeholder="Напишіть щось...">
-            <button id="btnText">Оновити текст</button>
-        </div>
+    <div id="setup">
+        <h1>Pixel Hunt</h1>
+        <div class="controls">
+            Choose difficulty: 
+            <select id="difficulty">
+                <option value="">--Please choose an option--</option>
+                <option value="lazy">Lazy</option>
+                <option value="normal">Normal</option>
+                <option value="catch">Catch me if you can</option>
+            </select>
 
-        <div class="input-section">
-            <input type="text" id="htmlInput" placeholder="<b>Тег</b> або текст...">
-            <button id="btnHTML">Оновити HTML</button>
-        </div>
+            Choose color: 
+            <select id="color">
+                <option value="">--Please choose an option--</option>
+                <option value="red">Red</option>
+                <option value="green">Green</option>
+                <option value="blue">Blue</option>
+            </select>
 
-        <div class="results">
-            <p>Результат textContent: <span id="resText">...</span></p>
-            <p>Результат innerHTML: <span id="resHTML">...</span></p>
+            <button id="startBtn">Start</button>
         </div>
     </div>
+
+    <div id="game" style="display: none;">
+        <div class="stats">
+            <div>Score: <span id="score">0</span></div>
+            <div>Time left for click: <span id="timer">0</span></div>
+        </div>
+        <div id="pixel" class="pixel"></div>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>
